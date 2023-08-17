@@ -4,11 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pokémon List</title>
-    <script src="js/scripts.js"></script>
     <link rel="stylesheet" href="css/styles.css" />
   </head>
+
   <body>
-    <button onclick="displayPokemon()">Show Pokémon</button>
-    <div id="output"></div>
+    <div class="pokedex">
+      <h1>Pokédex</h1>
+      <div class="search">
+        <label for="search-input">Search your Pokémon</label>
+        <input type="text" id="search-input" placeholder="Enter Pokémon name" />
+        <button id="search-button">Search</button>
+      </div>
+      <div class="show-all">
+        <button id="show-all-button">Show All</button>
+      </div>
+
+      <div id="output"></div>
+    </div>
+    <script src="js/scripts.js"></script>
   </body>
 </html>

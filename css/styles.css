@@ -1,63 +1,62 @@
 body {
-  background-color: rgb(238, 242, 247);
-  font-family: "Roboto", sans-serif;
-  font-size: 22px;
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
 }
 
-.container {
-  width: 80%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
-.card {
-  border: 1px solid #ccc;
-  margin: 20px;
+.pokedex {
+  background-color: #ffffff;
   padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease-in-out;
-  width: calc(33.33% - 40px);
-  background-color: white;
   border-radius: 10px;
-}
-
-.card:hover {
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-}
-
-.card img {
-  width: 100%;
-}
-
-.card h2 {
-  font-size: 24px;
-  color: #333;
-}
-
-.card p {
-  color: #666;
-}
-
-.button {
-  display: inline-block;
-  background-color: #f44336;
-  color: white;
-  padding: 10px 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
-  text-decoration: none;
-  font-size: 18px;
-  transition: background-color 0.3s ease-in-out;
-  border-radius: 5px;
-  margin-top: 10px;
+  width: 80%;
+  max-width: 500px;
 }
 
-.button:hover {
-  background-color: #ff5722;
+h1 {
+  color: #333;
+  margin: 0;
+  padding-bottom: 20px;
+}
+
+.search {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#search-input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+#search-button,
+#show-all-button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #f1c40f;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+#search-button:hover,
+#show-all-button:hover {
+  background-color: #f39c12;
+}
+
+#output {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }

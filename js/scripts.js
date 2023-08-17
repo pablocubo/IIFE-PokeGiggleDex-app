@@ -1,5 +1,5 @@
 const pokemonRepository = (function () {
-  const pokemonList = [
+  var pokemonList = [
     { name: "Bulbasaur", height: 7, weight: 6.9, types: ["grass", "poison"] },
     { name: "Charmander", height: 6, weight: 9, types: ["fire"] },
     { name: "Squirtle", height: 0.5, weight: 8.5, types: ["water"] },
@@ -9,31 +9,54 @@ const pokemonRepository = (function () {
     return pokemonList;
   }
 
-  function add(item) {
-    pokemonList.push(item);
-  }
-
   return {
     getAll: getAll,
-    add: add,
   };
 })();
 
-function displayPokemon() {
-  document.getElementById("output").innerHTML = "";
+// Function to add a list item for a Pokémon
+function addListItem(pokemon) {
+  var outputDiv = document.getElementById("output");
+  var listItem = document.createElement("div");
+  listItem.innerHTML = '<h3>' + pokemon.name + '</h3>'
+                     + '<p>Height: ' + pokemon.height + '</p>'
+                     + '<p>Weight: ' + pokemon.weight + '</p>'
+                     + '<p>Type: ' + pokemon.types.join(", ") + '</p>';
+  listItem.addEventListener("click", function() {
+    console.log("Clicked Pokémon: " + pokemon.name);
+  });
+  outputDiv.appendChild(listItem);
+}
 
-  pokemonRepository.getAll().forEach(function (pokemon) {
-    const name = pokemon.name;
-    const height = pokemon.height;
-    const weight = pokemon.weight;
-    const types = pokemon.types.join(", ");
+// Function to search for a Pokémon by name
+function searchPokemon() {
+  var searchValue = document.getElementById("search-input").value.trim().toLowerCase();
+  var outputDiv = document.getElementById("output");
+  outputDiv.innerHTML = ""; // Clear previous details
 
-    let output = `${name} (height: ${height}) (weight: ${weight}) ${types} <br>`;
+  var pokemon = pokemonRepository.getAll().find(function(p) {
+    return p.name.toLowerCase() === searchValue;
+  });
 
-    if (height > 6) {
-      output += " - Wow, that's big! <br>";
-    }
+  if (pokemon) {
+    addListItem(pokemon);
+  } else {
+    outputDiv.innerHTML = "<p>Pokémon not found!</p>";
+  }
+}
 
-    document.getElementById("output").innerHTML += output;
+// Function to display all Pokémon
+function showAllPokemon() {
+  var outputDiv = document.getElementById("output");
+  outputDiv.innerHTML = ""; // Clear previous details
+
+  var allPokemon = pokemonRepository.getAll();
+
+  allPokemon.forEach(function(pokemon) {
+    addListItem(pokemon);
   });
 }
+
+// Attach functions to buttons
+document.getElementById("search-button").addEventListener("click", searchPokemon);
+document.getElementById("show-all-button").addEventListener("click", showAllPokemon);
