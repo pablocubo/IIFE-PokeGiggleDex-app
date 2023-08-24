@@ -1,62 +1,67 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
+/* Reset some default margin and padding */
+body, h1, ul {
   margin: 0;
   padding: 0;
+}
+
+/* Apply a background color and center content */
+body {
+  background-color: #f0f0f0;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  flex-direction: column; /* Align content vertically */
 }
 
-.pokedex {
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+/* Style the Pokedex container */
+.Pokedex {
   text-align: center;
-  width: 80%;
-  max-width: 500px;
+  margin: 20px 0; /* Add margin at the top and bottom */
 }
 
-h1 {
+.Pokedex h1 {
+  font-size: 24px;
   color: #333;
-  margin: 0;
-  padding-bottom: 20px;
 }
 
-.search {
-  margin-bottom: 20px;
+/* Style the Pokémon list */
+.pokemon-list {
+  list-style: none;
+  padding: 0;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column; /* Align buttons vertically */
+  align-items: center; /* Center buttons horizontally */
 }
 
-#search-input {
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  flex-grow: 1;
-  margin-right: 10px;
+/* Style each Pokémon list item */
+.pokemon-list li {
+  margin: 10px 0;
+  width: 100%; /* Make each list item full width */
 }
 
-#search-button,
-#show-all-button {
+/* Style the Pokémon buttons */
+.pokemon-list button {
   padding: 10px 20px;
-  border-radius: 5px;
+  background-color: #ffcc00;
   border: none;
-  background-color: #f1c40f;
-  cursor: pointer;
-  margin-left: 10px;
-}
-
-#search-button:hover,
-#show-all-button:hover {
-  background-color: #f39c12;
-}
-
-#output {
-  padding: 20px;
-  border: 1px solid #ccc;
   border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  width: 100%; /* Make buttons the same width */
+}
+
+.pokemon-list button:hover {
+  background-color: #ff9900;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 600px) {
+  .Pokedex h1 {
+    font-size: 20px;
+  }
+
+  .pokemon-list button {
+    padding: 8px 16px;
+  }
 }
