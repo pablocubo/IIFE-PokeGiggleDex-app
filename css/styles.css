@@ -11,13 +11,14 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  flex-direction: column; /* Align content vertically */
+  flex-direction: column;
+  padding: 22px;
 }
 
 /* Style the Pokedex container */
 .Pokedex {
   text-align: center;
-  margin: 20px 0; /* Add margin at the top and bottom */
+  margin: 20px 0;
 }
 
 .Pokedex h1 {
@@ -25,19 +26,48 @@ body {
   color: #333;
 }
 
+#pokemon-info {
+  list-style: none;
+  padding: 10px 0; /* Add 10px padding from the upper border */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  height: fit-content;
+  background-color: #f2f2f2;
+}
+
+.pokemon-details {
+  background-color: #4caf50;
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+}
+.pokemon-details img {
+  display: block;
+  margin: 0 auto; /* Center horizontally */
+}
+
+
 /* Style the Pokémon list */
 .pokemon-list {
   list-style: none;
-  padding: 0;
+  padding: 10px;
   display: flex;
-  flex-direction: column; /* Align buttons vertically */
-  align-items: center; /* Center buttons horizontally */
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
 }
 
-/* Style each Pokémon list item */
 .pokemon-list li {
-  margin: 10px 0;
-  width: 100%; /* Make each list item full width */
+  flex-basis: calc(33.33% - 20px); /* Adjusted for padding */
+  margin: 10px;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 /* Style the Pokémon buttons */
@@ -48,7 +78,7 @@ body {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
-  width: 100%; /* Make buttons the same width */
+  width: 100%;
 }
 
 .pokemon-list button:hover {
