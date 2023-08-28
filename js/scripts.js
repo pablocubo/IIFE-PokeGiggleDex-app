@@ -5,7 +5,7 @@ var pokemonRepository = (function () {
   function addListItem(pokemon) {
     const listItem = document.createElement('li');
     const button = document.createElement('button');
-    button.innerText = pokemon.name;
+    button.textContent = pokemon.name; // Use textContent for security
     button.classList.add('pokemon-button');
     listItem.appendChild(button);
 
@@ -15,18 +15,13 @@ var pokemonRepository = (function () {
         pokemonInfo.innerHTML = '';
       } else {
         // Show the info
-        pokemonInfo.innerHTML = '<div class="pokemon-details">' +
-          '<h3>' + pokemon.name + '</h3>' +
-          '<img src="' + pokemon.imgUrl + '">' +
-          '<p>Height: ' + pokemon.height + '</p>' +
-          '<p>Weight: ' + pokemon.weight + '</p>' +
-          '<p>Types: ' + pokemon.types.join(', ') + '</p>' +
-          '<p>Stats: ' + JSON.stringify(pokemon.stats) + '</p>' +
-          '<p>Sprites: ' + JSON.stringify(pokemon.sprites) + '</p>' +
-          '<p>Moves: ' + JSON.stringify(pokemon.moves) + '</p>' +
-          '<p>Species: ' + JSON.stringify(pokemon.species) + '</p>' +
-          '<p>Evolution Chain: ' + JSON.stringify(pokemon.evolutionChain) + '</p>' +
-          '</div>';
+        pokemonInfo.innerHTML = `<div class="pokemon-details">
+          <h3>${pokemon.name}</h3>
+          <img src="${pokemon.imgUrl}">
+          <p>Height: ${pokemon.height}</p>
+          <p>Weight: ${pokemon.weight}</p>
+          <p>Types: ${pokemon.types.join(', ')}</p>
+        </div>`;
       }
       infoShown = !infoShown;
     });
@@ -39,42 +34,34 @@ var pokemonRepository = (function () {
     return pokemonList;
   }
 
-  function loadList() {
-    return fetch('https://pokeapi.co/api/v2/pokemon/')
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-        data.results.forEach(function (item) {
-          var pokemon = {
-            name: item.name,
-            detailsUrl: item.url,
-          };
-          pokemonList.push(pokemon);
-        });
-      })
-      .catch(function (error) {
-        console.error('Error loading Pokémon list', error);
+  async function loadList() {
+    try {
+      const response = await fetch('https://pokeapi.co/api/v2/pokemon/');
+      const data = await response.json();
+      data.results.forEach(function (item) {
+        var pokemon = {
+          name: item.name,
+          detailsUrl: item.url,
+        };
+        pokemonList.push(pokemon);
       });
+    } catch (error) {
+      console.error('Error loading Pokémon list', error);
+    }
   }
 
-  function loadDetails(pokemon) {
-    var url = pokemon.detailsUrl;
-    return fetch(url)
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (details) {
-        // Update imgUrl to the front sprite image URL
-        pokemon.imgUrl = details.sprites.front_default;
-        pokemon.height = details.height;
-        pokemon.weight = details.weight;
-        pokemon.types = details.types;
-        // ... (other properties)
-      })
-      .catch(function (error) {
-        console.error('Error loading Pokémon details', error);
-      });
+  async function loadDetails(pokemon) {
+    try {
+      const response = await fetch(pokemon.detailsUrl);
+      const details = await response.json();
+
+      pokemon.imgUrl = details.sprites.front_default;
+      pokemon.height = details.height;
+      pokemon.weight = details.weight;
+      pokemon.types = details.types;
+    } catch (error) {
+      console.error('Error loading Pokémon details', error);
+    }
   }
 
   return {
@@ -85,11 +72,15 @@ var pokemonRepository = (function () {
   };
 })();
 
-pokemonRepository.loadList().then(function () {
-  pokemonRepository.getAll().forEach(function (pokemon) {
-    pokemonRepository.loadDetails(pokemon).then(function () {
-      pokemonRepository.addListItem(pokemon);
-    });
-  });
-});
+async function initialize() {
+  await pokemonRepository.loadList();
+  const pokemonList = pokemonRepository.getAll();
+  for (const pokemon of pokemonList) {
+    await pokemonRepository.loadDetails(pokemon);
+    pokemonRepository.addListItem(pokemon);
+  }
+}
+
+initialize();
+
 
