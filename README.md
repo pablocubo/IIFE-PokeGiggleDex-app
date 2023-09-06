@@ -8,7 +8,6 @@ This is a simple Pokedex app that allows you to view and learn about various Pok
 ## How to Get the Project Running
 1. Clone the project repository to your local machine:
 2. Open the project directory:
-3. 
 3. Open the `index.html` file in your web browser to start using the Pokedex app.
 
 ## Project Dependencies
