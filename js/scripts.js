@@ -49,7 +49,7 @@ let pokemonRepository = (function () {
   // Function to fetch a list of Pokemon from the API
   async function loadList() {
     try {
-      const response = await fetch('https://pokeapi.co/api/v2/pokemon/?limit=40'); // Fetch Pokemon list
+      const response = await fetch('https://pokeapi.co/api/v2/pokemon/?limit=42'); // Fetch Pokemon list
       const data = await response.json(); // Parse response to JSON
       data.results.forEach(function (item) {
         var pokemon = {
