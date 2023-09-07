@@ -12,12 +12,18 @@
       <h1>Pokédex</h1>
       <div id="pokemon-info"></div>
     </div>
-    <ul class="pokemon-list">
-    
-    </ul>
-    
 
-      
-    <script src="js/scripts.js"></script> 
+    <ul class="pokemon-list"></ul>
+
+    <div id="pokemon-modal" class="modal">
+      <div class="modal-content">
+      <span class="close">&times;</span>
+      <div id="modal-content"></div>
+    </div>
+
+    <script src="js/promise-polyfill.js"></script>
+    <script src="js/fetch-polyfill.js"></script>
+
+    <script src="js/scripts.js"></script>
   </body>
 </html>

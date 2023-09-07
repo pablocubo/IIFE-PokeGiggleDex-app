@@ -1,5 +1,7 @@
 /* Reset some default margin and padding */
-body, h1, ul {
+body,
+h1,
+ul {
   margin: 0;
   padding: 0;
 }
@@ -26,41 +28,17 @@ body {
   color: #333;
 }
 
-#pokemon-info {
-  list-style: none;
-  padding: 10px 0; /* Add 10px padding from the upper border */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: 100%;
-  height: fit-content;
-  background-color: #f2f2f2;
-}
-
-.pokemon-details {
-  background-color: #4caf50;
-  padding: 20px;
-  border-radius: 10px;
-  color: white;
-  text-align: center;
-}
-.pokemon-details img {
-  display: block;
-  margin: 0 auto; /* Center horizontally */
-}
-
-
 /* Style the Pokémon list */
 .pokemon-list {
   list-style: none;
-  padding: 10px;
+  padding: 1px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10px;
+  gap: 1px;
   width: 100%;
+  max-width: 800px; /* Added max-width to make it fixed */
+  margin: 0 auto; /* Center horizontally */
 }
 
 .pokemon-list li {
@@ -81,8 +59,80 @@ body {
   width: 100%;
 }
 
+.pokemon-list button.grass {
+  background-color: #78c850; /* Grass type color */
+}
+
+.pokemon-list button.fire {
+  background-color: #f08030; /* Fire type color */
+}
+
+.pokemon-list button.water {
+  background-color: #6890f0; /* Water type color */
+}
+
 .pokemon-list button:hover {
   background-color: #ff9900;
+}
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* Style the fixed Pokémon info div */
+#pokemon-info {
+  list-style: none;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #f2f2f2;
+  position: fixed;
+  top: 0; /* Fixed at the top of the browser */
+  left: 50%; /* Position div horizontally */
+  transform: translateX(-50%); /* Center horizontally */
+  z-index: 1; /* Ensure it's above the Pokémon list */
+}
+
+.pokemon-details {
+  background-color: #4caf50;
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+}
+
+.pokemon-details img {
+  display: block;
+  margin: 0 auto; /* Center horizontally */
 }
 
 /* Media query for responsiveness */
