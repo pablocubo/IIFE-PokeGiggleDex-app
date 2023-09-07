@@ -1,7 +1,7 @@
 // Create a Pokemon Repository
-var pokemonRepository = (function () {
-  var pokemonList = []; // Store the list of Pokemon
-  var infoShown = false; // Track if Pokemon info is shown or hidden
+let pokemonRepository = (function () {
+  let pokemonList = []; // Store the list of Pokemon
+  let infoShown = false; // Track if Pokemon info is shown or hidden
 
   // Function to add a Pokemon to the list
   function addListItem(pokemon) {
