@@ -27,6 +27,7 @@ let pokemonRepository = (function () {
       <p>Height: ${pokemon.height}</p>
       <p>Weight: ${pokemon.weight}</p>
       <p>Types: ${pokemon.types.join(', ')}</p>
+      <p>Abilities: ${pokemon.abilities.join(', ')}</p>
     </div>`;
 
       modalContent.innerHTML = modalHTML;
@@ -74,6 +75,7 @@ let pokemonRepository = (function () {
       pokemon.height = details.height;
       pokemon.weight = details.weight;
       pokemon.types = details.types;
+      pokemon.abilities = details.abilities;
     } catch (error) {
       console.error('Error loading Pokémon details', error);
     }
