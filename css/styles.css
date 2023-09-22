@@ -1,171 +1,25 @@
-/* Reset some default margin and padding */
-body,
-h1,
-ul {
-  margin: 0;
-  padding: 0;
-}
-
-/* Apply a background color and center content */
+/* Spinning animation */
 body {
-  background-color: #f0f0f0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  flex-direction: column;
-  padding: 22px;
+  padding-top: 20px;
 }
 
-/* Style the Pokedex container */
-.Pokedex {
-  text-align: center;
-  margin: 20px 0;
-}
-
-.Pokedex h1 {
-  font-size: 24px;
-  color: #333;
-}
-
-/* Style the Pokémon list */
-.pokemon-list {
-  list-style: none;
-  padding: 1px;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1px;
-  width: 100%;
-  max-width: 800px; /* Added max-width to make it fixed */
-  margin: 0 auto; /* Center horizontally */
-}
-
-.pokemon-list li {
-  flex-basis: calc(33.33% - 20px); /* Adjusted for padding */
-  margin: 10px;
-  padding: 10px;
-  box-sizing: border-box;
-}
-
-/* Style the Pokémon buttons */
-.pokemon-list button {
-  padding: 10px 20px;
-  background-color: #ffcc00;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-  width: 100%;
-  height: 80px;
-}
-
-.pokemon-list button.grass {
-  background-color: #78c850; /* Grass type color */
-}
-
-.pokemon-list button.fire {
-  background-color: #f08030; /* Fire type color */
-}
-
-.pokemon-list button.water {
-  background-color: #6890f0; /* Water type color */
-}
-
-.pokemon-list button:hover {
-  background-color: #ff9900;
-}
-
-/* Modal styles */
-.modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-}
-
-.modal-content {
-  background-color: #fff;
-  margin: 15% auto;
-  padding: 10px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  max-width: 600px;
-}
-
-.close {
-  color: #171717;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-  padding: 5px;
-}
-
-/* Style the fixed Pokémon info div */
-#pokemon-info {
-  list-style: none;
-  padding: 10px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-  position: fixed;
-  top: 0; /* Fixed at the top of the browser */
-  left: 50%; /* Position div horizontally */
-  transform: translateX(-50%); /* Center horizontally */
-  z-index: 1; /* Ensure it's above the Pokémon list */
-}
-
-.pokemon-details {
-  background-color: #4caf50;
-  padding: 20px;
-  border-radius: 10px;
-  color: white;
-  text-align: center;
-}
-
-.pokemon-details img {
-  display: block;
-  margin: 0 auto; /* Center horizontally */
-}
-
-/* Media query for responsiveness */
-/* Media query for responsiveness */
-@media (max-width: 414px) {
-  .Pokedex h1 {
-    font-size: 20px;
+.spinning {
+    animation: spin 2s linear infinite;
   }
-
-  .pokemon-list {
-    grid-template-columns: repeat(
-      2,
-      1fr
-    ); /* Display two columns on smaller screens */
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
   }
-
-  .pokemon-list li {
-    flex-basis: calc(50% - 20px); /* Adjusted for padding */
+  
+  /* Same image sizes as before but 4 times smaller */
+  .img-container img {
+    max-width: 230px;
   }
-
-  .pokemon-list button {
-    padding: 8px 16px;
-    height: 60px; /* Adjust button height */
+  
+  .pokemon-button {
+    font-family: "Comic Sans MS", cursive, sans-serif; /* Just an example, please don't use Comic Sans */
   }
-
-  .pokemon-details {
-    background-color: #4caf50;
-    padding: 10px;
-    border-radius: 10px;
-    color: white;
-    text-align: center;
-  }
-}
+  
+ 
+  

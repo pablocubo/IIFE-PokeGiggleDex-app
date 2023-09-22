@@ -1,29 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pokémon List</title>
-    <link rel="stylesheet" href="css/styles.css" />
-  </head>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <body>
-    <div class="Pokedex">
-      <h1>Pokédex</h1>
-      <div id="pokemon-info"></div>
-    </div>
+  <title>Pokémon App</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
 
-    <ul class="pokemon-list"></ul>
+<!-- Main container to center content vertically and horizontally -->
+<div class="d-flex justify-content-center align-items-center" style="height: 100vh; flex-direction: column;">
+  
+  <!-- Pokémon ball image -->
+  <div class="img-container mb-4">
+    <img id="pokeball" src="img/pokeball.png" alt="Click to reveal Pokémon" class="img-fluid img-responsive spinning">
+  </div>
 
-    <div id="pokemon-modal" class="modal">
+  <!-- Container for Pokémon list -->
+  <div class="container gx-5">
+  <div id="pokemon-container" class="row mt-3" data-toggle="modal" data-target="#exampleModal" style="display: none;">
+    <ul class="pokemon-list row list-unstyled p-4">
+      <!-- The Pokemon list items will be appended here -->
+    </ul>
+  </div>
+</div>
+</div>
+
+  
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
-      <span class="close">&times;</span>
-      <div id="modal-content"></div>
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <script src="js/promise-polyfill.js"></script>
-    <script src="js/fetch-polyfill.js"></script>
 
-    <script src="js/scripts.js"></script>
-  </body>
+<!-- Bootstrap JS (optional) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script src="js/scripts.js"></script>
+
+</body>
 </html>
