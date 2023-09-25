@@ -18,8 +18,8 @@ let pokemonRepository = (function () {
     button.setAttribute('data-img', pokemon.imgUrl);
     button.setAttribute('data-height', pokemon.height);
     button.setAttribute('data-weight', pokemon.weight);
-    button.setAttribute('data-types', pokemon.types.join(', '));
-    button.setAttribute('data-abilities', pokemon.abilities.join(', '));
+    button.setAttribute('data-abilities', pokemon.abilities);
+    button.setAttribute('data-types', pokemon.types);
 
     listItem.appendChild(button);
 
@@ -78,14 +78,20 @@ let pokemonRepository = (function () {
     try {
       const response = await fetch(pokemon.detailsUrl); // Fetch Pokemon details
       const details = await response.json(); // Parse response to JSON
-      pokemon.types = details.types.map((typeInfo) => typeInfo.type.name);
 
+      // Process abilities and convert them into a comma-separated string
+      const abilityNames = details.abilities.map(abilityObj => abilityObj.ability.name);
+      pokemon.abilities = abilityNames.join(', ');
+
+      // Process types and convert them into a comma-separated string
+      const typeNames = details.types.map(typeObj => typeObj.type.name);
+      pokemon.types = typeNames.join(', ');
       // Populate Pokemon details
       pokemon.imgUrl = details.sprites.front_default;
       pokemon.height = details.height;
       pokemon.weight = details.weight;
-      pokemon.types = details.types;
-      pokemon.abilities = details.abilities;
+      /* pokemon.types = details.types; */
+      /* pokemon.abilities = details.abilities; */
 
 
 
