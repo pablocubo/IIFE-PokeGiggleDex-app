@@ -1,24 +1,30 @@
-/* Spinning animation */
-body {
-  padding-top: 20px;
+.spinning {
+  animation: spin 2s linear infinite;
 }
 
-.spinning {
-    animation: spin 2s linear infinite;
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
   }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+
+  100% {
+    transform: rotate(360deg);
   }
-  
-  /* Same image sizes as before but 4 times smaller */
-  .img-container img {
-    max-width: 230px;
-  }
-  
-  .pokemon-button {
-    font-family: "Comic Sans MS", cursive, sans-serif; /* Just an example, please don't use Comic Sans */
-    
-  }
-  
+}
+
+/* Same image sizes as before but 4 times smaller */
+.img-container img {
+  max-width: 230px;
+}
+
+.pokemon-button {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  /* Just an example, please don't use Comic Sans */
+
+}
+
+#pokemon-container {
+  padding-top: 20px;
+
+  overflow-y: auto;
+}

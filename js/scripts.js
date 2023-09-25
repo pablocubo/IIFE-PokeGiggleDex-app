@@ -130,6 +130,7 @@ let pokemonRepository = (function () {
     loadDetails: loadDetails,
     showModal: showModal,
   };
+
 })();
 
 
