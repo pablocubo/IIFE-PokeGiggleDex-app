@@ -1,6 +1,5 @@
 let pokemonRepository = (function () {
   let pokemonList = []; // Store the list of Pokemon
-  let infoShown = false; // Track if Pokemon info is shown or hidden
 
   // Function to add a Pokemon to the list
   function addListItem(pokemon) {
@@ -90,9 +89,6 @@ let pokemonRepository = (function () {
       pokemon.imgUrl = details.sprites.front_default;
       pokemon.height = details.height;
       pokemon.weight = details.weight;
-      /* pokemon.types = details.types; */
-      /* pokemon.abilities = details.abilities; */
-
 
 
     } catch (error) {
@@ -102,9 +98,7 @@ let pokemonRepository = (function () {
 
   // Function to show the modal with Pokemon details
   function showModal(pokemon) {
-    const modal = document.getElementById('exampleModal');
     const modalContent = document.getElementById('modal-body');
-
 
 
     // Create the modal content
@@ -134,7 +128,6 @@ let pokemonRepository = (function () {
 })();
 
 
-// Your existing code up to the 'initialize' function remains unchanged
 
 async function initialize() {
   const pokeball = document.getElementById('pokeball');
@@ -167,7 +160,7 @@ async function initialize() {
         pokemonRepository.addListItem(pokemon); // Add the Pokémon to the list
       }
 
-      renderPokemonList(pokemonList);
+
     }, 1000); // 1 second fade out time
   });
 }
