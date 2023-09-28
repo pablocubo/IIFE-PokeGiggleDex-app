@@ -7,7 +7,7 @@ let pokemonRepository = (function () {
     listItem.classList.add('col-12', 'col-md-4', 'mb-2');
     const button = document.createElement('button'); // Create a <button> element
     button.textContent = pokemon.name; // Set the button text to the Pokemon's name
-    button.classList.add('pokemon-button', 'btn', 'btn-block', 'btn-success', 'w-100', 'mb-3'); // Add a CSS class to the button
+    button.classList.add('pokemon-button', 'btn', 'btn-block', 'btn-lg', 'w-100', 'mb-3'); // Add a CSS class to the button
     listItem.appendChild(button); // Append the button to the list item
 
     // Add data attributes to store Pokémon details
@@ -38,7 +38,7 @@ let pokemonRepository = (function () {
       // Set modal content with Pokémon details
       modalTitle.textContent = name;
       modalBody.innerHTML = `
-        <img src="${imgUrl}" class="modal-img" style="width: 50%;">
+        <img src="${imgUrl}" class="modal-img" style="width: 40%;">
         <p>Height: ${height}</p>
         <p>Weight: ${weight}</p>
         <p>Types: ${types}</p>
@@ -58,7 +58,7 @@ let pokemonRepository = (function () {
   // Function to fetch a list of Pokemon from the API
   async function loadList() {
     try {
-      const response = await fetch('https://pokeapi.co/api/v2/pokemon/?limit=88'); // Fetch Pokemon list
+      const response = await fetch('https://pokeapi.co/api/v2/pokemon/?limit=45'); // Fetch Pokemon list
       const data = await response.json(); // Parse response to JSON
       data.results.forEach(function (item) {
         var pokemon = {
@@ -129,41 +129,98 @@ let pokemonRepository = (function () {
 
 
 
+// Function to show search bar
+function showSearchBar() {
+  const searchElement = document.querySelector('.search-wrapper');
+  if (searchElement) {
+    searchElement.style.display = 'd-none';
+  }
+}
+
+// Add the click event to the Pokéball
+document.addEventListener('DOMContentLoaded', function () {
+  const pokeballElement = document.querySelector('#pokeball');
+  if (pokeballElement) {
+    pokeballElement.addEventListener('click', function () {
+      showSearchBar();
+    });
+  }
+});
+
+
+// Initialize function to set up the initial state and event listeners
 async function initialize() {
+  // Get the pokeball element and add the spinning class for animation
   const pokeball = document.getElementById('pokeball');
   pokeball.classList.add('spinning');
 
+  // Load the list of Pokemon from the repository
   await pokemonRepository.loadList();
 
-  // Add spinning back if removed due to await
-  pokeball.classList.add('spinning');
+  // Get the search input element and make it visible
+  const searchInput = document.getElementById('realtime-search');
+  searchInput.style.display = 'block';
 
-  pokeball.addEventListener('click', async function () {
-    // Remove spinning
-    pokeball.classList.remove('spinning');
+  // Function to filter Pokemon based on a search query
+  function filterPokemon(query) {
+    // Get all buttons that represent Pokemon
+    const pokemonButtons = document.querySelectorAll('.pokemon-button');
 
-    // Fade out animation
-    pokeball.style.transition = 'opacity 1s linear';
-    pokeball.style.opacity = '0';
+    // Loop through each button to filter Pokemon
+    pokemonButtons.forEach(function (button) {
+      const name = button.textContent.toLowerCase();
 
-    setTimeout(async () => {
-      pokeball.style.display = 'none';
-
-      // Show the Pokémon list container
-      const pokemonContainer = document.getElementById('pokemon-container');
-      pokemonContainer.style.display = 'block';
-
-      await pokemonRepository.loadList(); // Load Pokémon list
-      const pokemonList = pokemonRepository.getAll(); // Get all Pokémon
-      for (const pokemon of pokemonList) {
-        await pokemonRepository.loadDetails(pokemon); // Load details for each Pokémon
-        pokemonRepository.addListItem(pokemon); // Add the Pokémon to the list
+      // Show the Pokemon if its name includes the search query
+      if (name.includes(query)) {
+        button.parentElement.style.display = 'block';
+      } else {
+        // Hide the Pokemon if its name does not include the search query
+        button.parentElement.style.display = 'none';
       }
+    });
+  }
 
+  // Event listener for real-time search functionality
+  searchInput.addEventListener('input', function () {
+    // Get the search term from the input
+    const searchTerm = this.value.toLowerCase();
 
-    }, 1000); // 1 second fade out time
+    // Filter the Pokemon list based on the search term
+    filterPokemon(searchTerm);
+  });
+
+  // Event listener for the pokeball click action
+  pokeball.addEventListener('click', async function () {
+    // Stop the pokeball from spinning and hide it
+    pokeball.classList.remove('spinning');
+    pokeball.style.display = 'none';
+
+    // Hide the pokeball container
+    const pokeballContainer = document.getElementById('pokeball-container');
+    if (pokeballContainer) {
+      pokeballContainer.style.display = 'none';
+    }
+
+    // Show the Pokemon list after a 1-second delay
+    setTimeout(async () => {
+      const pokemonContainer = document.getElementById('pokemon-container');
+      if (pokemonContainer) {
+        // Make the Pokemon container visible
+        pokemonContainer.style.display = 'block';
+        pokemonContainer.classList.remove('d-none');
+
+        // Fetch and display all Pokemon
+        const pokemonList = pokemonRepository.getAll();
+        for (const pokemon of pokemonList) {
+          await pokemonRepository.loadDetails(pokemon);
+          pokemonRepository.addListItem(pokemon);
+        }
+      }
+    }, 1000);
   });
 }
 
+// Invoke the initialize function to set everything up
+initialize();
 
-initialize(); // Initialize the app
+/* eslint quotes: "off" */

@@ -1,60 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+  <link rel="icon" href="img/Poké_Ball_icon.svg.png" type="image/x-icon">
   <title>Pokémon App</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="dist/styles.css">
 </head>
-<body>
 
-<!-- Main container to center content vertically and horizontally -->
-<div class="d-flex justify-content-center align-items-center" style="height: 100vh; flex-direction: column;">
-  
-  <!-- Pokémon ball image -->
-  <div class="img-container mb-4">
-    <img id="pokeball" src="img/pokeball.png" alt="Click to reveal Pokémon" class="img-fluid img-responsive spinning">
-  </div>
+<body class="d-flex flex-column min-vh-100">
 
-  <!-- Container for Pokémon list -->
-  <div class="container gx-5">
-  <div id="pokemon-container" class="row mt-3" data-toggle="modal" data-target="#exampleModal" style="display: none; margin-top: 50px;">
-    <ul class="pokemon-list row list-unstyled p-4">
-      <!-- The Pokemon list items will be appended here -->
-    </ul>
-  </div>
-</div>
-</div>
-
-  
-
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar navbar-expand-lg custom-navbar">
+      <a class="navbar-brand navbar-brand-custom" href="./">
+        <img src="img/pokeball1.png" alt="Logo">
+        Pokémon App
+      </a>
+      <!-- search bar with bootstrap-->
+      <div class="search-container ml-auto">
+        <div class="input-group">
+          <input type="text" class="form-control" id="realtime-search" placeholder="Search Pokémon...">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
         </div>
-        <div class="modal-body" id="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main content -->
+  <main class="flex-grow-1 d-flex flex-column align-items-center justify-content-center">
+
+    <!--Pokemon Ball container -->
+    <div id="pokeball-container">
+      <div class="img-container mb-4">
+        <img id="pokeball" src="img/pokeball.png" alt="Click to reveal Pokémon"
+          class="img-fluid img-responsive spinning">
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Search Bar -->
+      <div class="search wrapper d-none"> <!-- Added d-none class -->
+        <label for="pokemon-search">Search Pokemon</label>
+        <input type="search" id="pokemon-search">
+      </div>
+
+      <!-- Pokemon List Container -->
+      <div id="pokemon-container" class="row mt-5 mb-5 justify-content-center d-none p-3"
+        style="padding-bottom: 100px;">
+        <div class="user-cards" data-user-cards-container></div>
+
+
+
+        <!-- Pokemon List -->
+        <ul class="pokemon-list row list-unstyled p-4" style="padding-bottom: 30px;">
+          <!-- The Pokemon list items will be appended here -->
+        </ul>
+      </div>
+    </div>
+
+    <!-- Pokémon Detail Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h5 class="modal-title w-100" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body text-center" id="modal-body">
+            <h6 id="pokemonName"></h6>
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </main>
+
+  <!-- Footer -->
+  <footer id="footer" class="text-center py-3">
+    <p>© 2023 Pokémon App. All rights reserved.</p>
+  </footer>
 
 
-<!-- Bootstrap JS (optional) -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-<script src="dist/scripts.js"></script>
-
+  <!-- Bootstrap JS (optional) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="dist/scripts.js"></script>
 </body>
+
 </html>

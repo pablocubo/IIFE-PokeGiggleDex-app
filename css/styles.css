@@ -1,3 +1,41 @@
+/* ====== Global Styles ====== */
+body {
+  background-color: #ebd693;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  min-height: 100vh;
+}
+
+/* ====== Layout and Positioning ====== */
+.main-content {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  padding-top: 20px;
+  position: relative;
+}
+
+.pokemon-container {
+  margin-bottom: 100px;
+  /* New */
+  margin-top: 100px;
+  z-index: 1;
+}
+
+#pokemon-container {
+  background-color: rgba(21, 23, 28, 1);
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: none;
+  margin: auto;
+  margin-top: 50px;
+  max-width: 80%;
+  padding: 20px;
+}
+
+/* ====== Animation and Transitions ====== */
 .spinning {
   animation: spin 2s linear infinite;
 }
@@ -12,19 +50,80 @@
   }
 }
 
-/* Same image sizes as before but 4 times smaller */
+/* ====== Component-Specific Styles ====== */
 .img-container img {
   max-width: 230px;
 }
 
-.pokemon-button {
-  font-family: "Comic Sans MS", cursive, sans-serif;
-  /* Just an example, please don't use Comic Sans */
-
+.pokeball-centering {
+  left: 50%;
+  position: fixed;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
 }
 
-#pokemon-container {
-  padding-top: 20px;
+/* ====== Buttons and Interactions ====== */
+.pokemon-button {
+  background-color: rgba(230, 76, 60, 0.9);
+  border-radius: 15px;
+  color: white;
+  transition: background-color 0.3s ease;
+}
 
-  overflow-y: auto;
+.pokemon-button:hover {
+  background-color: rgb(255, 85, 66);
+  color: white;
+}
+
+/* ====== Footer Styles ====== */
+#footer {
+  background-color: rgba(21, 23, 28, 1);
+  bottom: 0;
+  color: #656565;
+  padding: 10px;
+  position: relative;
+  width: 100%;
+}
+
+/* ====== Navbar Styles ====== */
+.custom-navbar {
+  background-color: rgba(21, 23, 28, 1);
+}
+
+.navbar-brand-custom {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 33px;
+  font-weight: bold;
+  padding: 0;
+}
+
+.navbar-brand-custom img {
+  height: 90px;
+  width: 90px;
+}
+
+.navbar-brand-custom:hover {
+  color: #ebd693;
+  text-decoration: none;
+}
+
+/* ====== Other Styles ====== */
+.card {
+  border: none;
+}
+
+#exampleModal .modal-title {
+  color: #000000;
+  font-family: 'Your Custom Font', sans-serif;
+  font-size: 36px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.pokemon-image {
+  border: 2px solid #ff0000;
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
 }
