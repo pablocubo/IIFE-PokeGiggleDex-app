@@ -130,7 +130,9 @@ let pokemonRepository = (function () {
 
 
 // Function to show search bar
+
 function showSearchBar() {
+  document.querySelector('.search-container').classList.remove('d-none');
   const searchElement = document.querySelector('.search-wrapper');
   if (searchElement) {
     searchElement.style.display = 'd-none';
