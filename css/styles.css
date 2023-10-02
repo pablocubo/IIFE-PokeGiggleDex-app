@@ -53,6 +53,7 @@ body {
 /* ====== Component-Specific Styles ====== */
 .img-container img {
   max-width: 230px;
+  cursor: pointer
 }
 
 .pokeball-centering {
@@ -127,3 +128,7 @@ body {
   height: 100px;
   width: 100px;
 }
+
+/* .search-container {
+
+} */
