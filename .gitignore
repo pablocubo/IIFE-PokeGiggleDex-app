@@ -4,3 +4,5 @@
 # Ignoring the entire modules directory
 node_modules/
 
+#ignoring dist folder
+dist/
