@@ -1,40 +1,41 @@
-# IIFE-PokeGiggleDex-app
-
 # Pokémon App
 
-## Overview
+This is a Pokémon App that allows users to search and view details about different Pokémon. The application is built using HTML, CSS, JavaScript, and Bootstrap.
 
-This is a simple web application that uses the PokéAPI to display a list of Pokémon. Users can click on a Pokémon to view more details like height, weight, types, and abilities.
+<img src="img/pokeball1.png" alt="Pokémon App Logo" width="100" height="100">
 
-## Features
-- List of Pokémon generated from the API
-- Detailed modal view for each Pokémon
-- Mobile responsive design
-- Spinning Pokéball loader
+## Table of Contents
+- [Technologies Used](#technologies-used)
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Structure](#structure)
+- [Usage](#usage)
+- [License](#license)
 
 ## Technologies Used
-- HTML
+
+- HTML5
+- CSS3
 - JavaScript
-- CSS
-- Bootstrap
+- Bootstrap 4.5.2
+
+## Features
+
+- Responsive design using Bootstrap.
+- Search functionality to find Pokémon by name.
+- Modal to display Pokémon details.
+- Hover effect on Poké Ball to reveal Pokémon list.
 
 ## Prerequisites
 
-- A modern web browser (Chrome, Firefox, Safari, etc.)
-- Internet connection
+Before you begin, ensure you have met the following requirements:
+- A modern web browser (e.g., Chrome, Firefox, Edge, Safari).
 
-## Setup
+## Installation
+
+To install and run this Pokémon App locally, follow these steps:
 
 1. Clone the repository:
-2. git clone https://github.com/your-username/pokemon-app.git
-3. Navigate into the project directory:
-4. Open `index.html` in your preferred browser.
-
-## Usage
-
-1. When the page loads, you'll see a spinning Pokéball. Click on it to reveal the list of Pokémon.
-2. Click on a Pokémon name to view more details in a modal window.
-
-## Author
-
-Pablo Antonio Lara Roloff
+   ```bash
+   git clone https://github.com/pablocubo/pokemon-app.git
