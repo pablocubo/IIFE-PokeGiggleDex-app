@@ -1,6 +1,6 @@
 # Pokémon App
 
-This is a Pokémon App that allows users to search and view details about different Pokémon. The application is built using HTML, CSS, JavaScript, and Bootstrap.
+This is a Pokémon App that allows users to search and view details about different Pokémon. The application is built using HTML, CSS, JavaScript, and Bootstrap, and it fetches Pokémon data from the [PokéAPI](https://pokeapi.co/).
 
 <img src="img/pokeball1.png" alt="Pokémon App Logo" width="100" height="100">
 
@@ -19,6 +19,7 @@ This is a Pokémon App that allows users to search and view details about differ
 - CSS3
 - JavaScript
 - Bootstrap 4.5.2
+- [PokéAPI](https://pokeapi.co/)
 
 ## Features
 
@@ -26,6 +27,7 @@ This is a Pokémon App that allows users to search and view details about differ
 - Search functionality to find Pokémon by name.
 - Modal to display Pokémon details.
 - Hover effect on Poké Ball to reveal Pokémon list.
+- Fetches data from the [PokéAPI](https://pokeapi.co/).
 
 ## Prerequisites
 
